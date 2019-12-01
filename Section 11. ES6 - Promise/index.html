@@ -1,0 +1,55 @@
+<html>
+<head>
+</head>
+
+<body>
+    <button> ClickMe  </button>
+    <!-- <script src="app.js"></script>  
+     -->
+    <script>
+        function startClick(resolve, reject) {
+            var count = 0
+            const button = document.querySelector('button')
+            button.addEventListener('click', function () {
+                count += 1
+            })
+
+
+            setTimeout(function () {
+                    if (count >= 5) {
+                        // alert('resolved') // resolved
+                        resolve('resolved: you clicked more than 5 times ')
+                    } else {
+                        // alert('rejected') // rejected
+                        reject('rejected: not click more than 5 times')
+                    }
+                }, 2000)
+
+            // return new Promise((resolve, reject) => {
+            //     setTimeout(function () {
+            //         if (count >= 5) {
+            //             // alert('resolved') // resolved
+            //             resolve()
+            //         } else {
+            //             // alert('rejected') // rejected
+            //             reject('found error: not click more than 5 times')
+            //         }
+            //     }, 2000)
+            // })
+
+        }
+
+        // startClick().then(() => alert('you click more then 5 times'))
+        //     .catch( (err) => alert(err)
+        // )
+
+        startClick((successMessage) => {
+            alert(successMessage)
+        }, (err) => {
+            alert(err)
+        })
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>
